@@ -79,8 +79,8 @@ bot.on("ready", () => {
         let char = new XP('');
 
         try {
-            char.deserialize(`XP_${args.join(" ").toLowerCase()}.json`)
-            if (char.jogador != msg.author?.username) throw new PermissionError();
+            char.deserialize(`XP_${args.join(" ").toLowerCase()}.json`);
+            if ((char.jogador != msg.author?.username) && (char.narrador != msg.author?.username)) throw new PermissionError();
         } catch (err) {
             if(error_handler(msg, err)) return;
         }
@@ -107,7 +107,7 @@ bot.on("ready", () => {
 
         try {
             char.deserialize(`XP_${charName}.json`)
-            if (char.jogador != msg.author?.username) throw new PermissionError();
+            if ((char.jogador != msg.author?.username) && (char.narrador != msg.author?.username)) throw new PermissionError();
         } catch (err) {
             if (error_handler(msg, err)) return;
         }
